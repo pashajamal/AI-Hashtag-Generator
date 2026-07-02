@@ -24,7 +24,6 @@ def index():
     if request.method == 'POST':
         # Retrieve the uploaded image from the form submission
         image = request.files['image']
-
         image.save("uploaded_image.jpg")
 
         # Encode the saved image to Base64 so it can be sent inline via the API
