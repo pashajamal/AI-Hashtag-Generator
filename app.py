@@ -94,7 +94,5 @@ def index():
     # GET request: render the empty form with no hashtags
     return render_template('index.html', hashtags=None)
 
-
-# यह ब्लॉक यह सुनिश्चित करता है कि सर्वर केवल तब चले जब यह फ़ाइल सीधे (Main script की तरह) रन की जाए।
 if __name__ == '__main__':
     app.run(debug=True)
