@@ -100,5 +100,4 @@ def index():
 if __name__ == '__main__':
     # Flask डेवलपमेंट सर्वर को चालू करता है।
     # debug=True रखने से कोड बदलते ही सर्वर अपने आप रीलोड (Auto-reload) हो जाता है 
-    # और एरर आने पर ब्राउज़र में ही पूरी एरर रिपोर्ट (Interactive error page) दिख जाती है।
     app.run(debug=True)
