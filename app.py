@@ -24,6 +24,8 @@ def index():
     if request.method == 'POST':
         # Retrieve the uploaded image from the form submission
         image = request.files['image']
+
+        # Save the uploaded image temporarily to disk for encoding
         image.save("uploaded_image.jpg")
 
         # Encode the saved image to Base64 so it can be sent inline via the API
@@ -57,7 +59,6 @@ def index():
                             "text": "Provide the hashtags for this image:"
                         },
                         {
-                            # Pass the image as a Base64 data URI (JPEG)
                             "type": "image_url",
                             "image_url": {
                                 "url": f"data:image/jpeg;base64,{base64_image}"
@@ -78,6 +79,7 @@ def index():
         )
 
         # Extract the assistant's reply and split on commas to get individual hashtags
+        # e.g. "#nature, #sunset, ..." → ['#nature', ' #sunset', ...]
         hashtags = (
             response.json()
             .get("choices")[0]
@@ -93,6 +95,10 @@ def index():
     return render_template('index.html', hashtags=None)
 
 
+# यह ब्लॉक यह सुनिश्चित करता है कि सर्वर केवल तब चले जब यह फ़ाइल सीधे (Main script की तरह) रन की जाए।
+# अगर इस फ़ाइल को किसी दूसरी स्क्रिप्ट में इम्पोर्ट किया जाएगा, तो नीचे का कोड रन नहीं होगा।
 if __name__ == '__main__':
-    # Run the Flask dev server with auto-reload and debug error pages enabled
+    # Flask डेवलपमेंट सर्वर को चालू करता है।
+    # debug=True रखने से कोड बदलते ही सर्वर अपने आप रीलोड (Auto-reload) हो जाता है 
+    # और एरर आने पर ब्राउज़र में ही पूरी एरर रिपोर्ट (Interactive error page) दिख जाती है।
     app.run(debug=True)
