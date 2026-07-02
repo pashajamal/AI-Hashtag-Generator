@@ -78,7 +78,7 @@ def index():
         )
 
         # Extract the assistant's reply and split on commas to get individual hashtags
-        # e.g. "#nature, #sunset, ..." → ['#nature', ' #sunset', ...]
+        # e.g. "#nature, #sunset, ..." 
         hashtags = (
             response.json()
             .get("choices")[0]
