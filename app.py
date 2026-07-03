@@ -38,7 +38,7 @@ def index():
         }
 
         # Build the chat completion payload:
-        # - System prompt locks the model into returning exactly 30
+        # - System prompt locks the model into
         payload = {
             "model": "gpt-4o-mini",
             "messages": [
