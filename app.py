@@ -39,7 +39,7 @@ def index():
 
         # Build the chat completion payload:
         # - System prompt locks the model into returning exactly 30 comma-separated hashtags
-        # - User message passes both a text instruction
+        # - User message passes
         payload = {
             "model": "gpt-4o-mini",
             "messages": [
