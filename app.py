@@ -37,8 +37,7 @@ def index():
             "Authorization": f"Bearer {os.getenv('OPENAI_KEY')}"
         }
 
-        # Build the chat completion payload:
-        # - System prompt
+        # Build the chat completion payload
         payload = {
             "model": "gpt-4o-mini",
             "messages": [
